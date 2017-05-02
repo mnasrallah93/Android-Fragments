@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:baselineAligned="false"
+    android:divider="?android:attr/dividerHorizontal"
+    android:orientation="horizontal"
+    android:showDividers="middle"
+    tools:context="mn.proj2bm.professorListActivity">
+
+    <!--
+    This layout is a two-pane layout for the professors
+    master/detail flow.
+    
+    -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/professor_list">
+
+        <TextView
+            android:id="@+id/professorDetail_NameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="42sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/professor_detail_container"
+            android:layout_marginTop="56dp"
+            app:srcCompat="@android:drawable/list_selector_background" />
+
+        <RatingBar
+            android:id="@+id/profRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/professor_detail_container"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_marginTop="43dp"
+            android:layout_below="@+id/professorDetail_NameTitle"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/imageView"
+            android:layout_above="@+id/profRatingBar">
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/professor_list"
+        android:name="mn.proj2bm.professorListFragment"
+        android:layout_width="@dimen/item_width"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="mn.proj2bm.professorListActivity"
+        tools:listitem="@layout/professor_list_content" >
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
